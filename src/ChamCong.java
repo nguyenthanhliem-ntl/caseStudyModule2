@@ -21,11 +21,6 @@ public class ChamCong extends Employee{
     }
 
     @Override
-    public void luong() {
-         int luong = this.cong *500000;
-    }
-
-    @Override
     public String toString() {
         return "ChamCong{" +
                 "cong=" + cong +

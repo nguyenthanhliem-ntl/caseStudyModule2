@@ -11,11 +11,11 @@ public class Main {
                     " 1. Thêm nhân viên \n" +
                     " 2. Sửa nhân viên \n" +
                     " 3. Xoá nhân viên \n" +
-                    " 4. Hiển thị danh sách nhân viên đang có \n" +
+                    " 4. Hiển thị danh sách nhân viên \n" +
                     " 5. Quản lý chấm công \n" +
-                    " 6. Xem công \n"+
-                    " 7. Thoát \n" +
-                    " 8. Lương");
+                    " 6. Xem công \n" +
+                    " 7. Xem Lương \n" +
+                    " 8. Thoát ") ;
 
 
             int choose = cty.nextInt();
@@ -44,11 +44,12 @@ public class Main {
                     manager.showCong(cty.next());
                     break;
                 case 7:
-                    System.exit(0);
-                    break;
-                case 8:
                     System.out.println("Nhập Id để xem lương: ");
                     manager.luong(cty.next());
+                    break;
+                case 8:
+                    System.exit(0);
+                    break;
                 default:
                     System.out.println("Không có trong yêu cầu !");
                     break;

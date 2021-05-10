@@ -165,12 +165,19 @@ public class Manager {
             if (edit.getId().equals(id)) {
                 System.out.println("Nhập công: ");
                 Scanner newCong = new Scanner(System.in);
-                int newCongNgay = newCong.nextInt();
-                edit.setCongNV(newCongNgay);
                 i++;
+                do {
+                    int newCongNgay = newCong.nextInt();
+
+                    if(newCongNgay <=0){
+                        System.out.println("Yêu cầu nhâp lại công");
+                    continue;}
+                    edit.setCongNV(newCongNgay);
+                }while (!checkCong(newCong));
             }
         }
     }
+
     // check công qua id
     public void showCong(String id) {
         for (Employee check : emloyeeList
@@ -178,12 +185,16 @@ public class Manager {
             if (check.getId().equals(id)) {
                 for (int i = 0; i < check.getCongNV() ; i++) {
                     int a = ( check.getCongNV() + i);
+
                     System.out.println("Số công : " +  a);
+
                 }
 
             }
         }
     }
+
+    // check trùng id
     private boolean checkId(String id){
         boolean check = true;
         for (Employee checker:emloyeeList
@@ -192,6 +203,8 @@ public class Manager {
         }
         return check;
     }
+
+    // check trùng email
     private boolean checkEmail(String email){
         boolean checkEmail = true;
         for (Employee checker1:emloyeeList
@@ -200,12 +213,25 @@ public class Manager {
         }
         return checkEmail;
     }
+    private boolean checkCong(Scanner congNV){
+        boolean checkEmail = true;
+        for (Employee checker1:emloyeeList
+        ) {
+            if(checker1.getId().equals(congNV)) checkEmail = false;
+        }
+        return checkEmail;
+    }
+
+
+    // tính lương
     public void luong(String id) {
         for (Employee tinhLuong: emloyeeList
              ) {
             if(tinhLuong.getId().equals(id)){
                 int a = tinhLuong.getCongNV()* 8 *500000;
                 System.out.println("Lương của bạn là : " + a+ "Vnđ");
+            }else if(tinhLuong.getCongNV()<=0){
+                System.out.println("Bạn bị đuổi việc cmnr! ");
             }
         }
     }
